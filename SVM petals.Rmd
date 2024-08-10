@@ -1,0 +1,110 @@
+---
+title: "svm"
+output: html_document
+date: "2024-08-10"
+---
+```{r}
+# Load necessary libraries
+library("e1071")
+library("caret")
+```
+
+
+```{r}
+# Load the Iris dataset
+data(iris)
+```
+
+
+```{r}
+# Explore the data
+head(iris)
+summary(iris)
+str(iris)
+```
+
+
+```{r}
+# Create a custom visualization function
+visualize_data <- function(data, x_var, y_var) {
+  plot(data[[x_var]], data[[y_var]], 
+       col = as.numeric(data$Species), 
+       pch = 19, 
+       main = paste(x_var, "vs", y_var), 
+       xlab = x_var, 
+       ylab = y_var)
+
+  legend("topright", 
+         legend = levels(data$Species), 
+         col = unique(as.numeric(data$Species)), 
+         pch = 19, 
+         title = "Species")
+}
+```
+
+
+```{r}
+# Visualize Sepal Length vs Sepal Width
+visualize_data(iris, "Sepal.Length", "Sepal.Width")
+```
+
+
+```{r}
+# Split the data into training and testing sets
+set.seed(123)
+trainIndex <- createDataPartition(iris$Species, p = 0.7, list = FALSE)
+iris_train <- iris[trainIndex, ]
+iris_test <- iris[-trainIndex, ]
+```
+
+
+
+
+```{r}
+# Train an SVM model with a polynomial kernel
+model <- svm(Species ~ ., data = iris_train, kernel = "polynomial", cost = 1, degree = 3)
+```
+
+
+```{r}
+# Perform hyperparameter tuning with cross-validation
+trctrl <- trainControl(method = "cv", number = 5)
+tuneGrid <- expand.grid(degree = 2:4, scale = c(0.001, 0.01, 0.1), C = 2^(2:7))  
+tuned_model <- train(Species ~ ., data = iris_train, method = "svmPoly",
+                     trControl = trctrl, tuneGrid = tuneGrid)
+```
+
+
+```{r}
+# Print the best tuned parameters
+print(tuned_model$bestTune)
+```
+
+```{r}
+plot(tuned_model)
+```
+```{r}
+plot(tuned_model$bestTune)
+```
+
+
+```{r}
+# Make predictions on the test set
+predicted <- predict(tuned_model, iris_test[, -5])
+```
+
+
+```{r}
+# Evaluate the model performance
+confusionMatrix(table(predicted, iris_test$Species))
+```
+
+
+```{r}
+# Visualize Petal Length vs Petal Width with predicted classes
+iris_test$Predicted <- predicted
+visualize_data(iris_test, "Petal.Length", "Petal.Width")
+
+```
+
+
