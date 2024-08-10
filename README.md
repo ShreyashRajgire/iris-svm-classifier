@@ -40,12 +40,14 @@ This project provides a foundational understanding of SVM, which can be extended
 
 * **Hyperparameter Tuning Results:**
   ![image](https://github.com/user-attachments/assets/3c598c62-2c3a-476f-b104-b70a9e0b8f21)
+  
 
 
 * **Model Accuracy:**  Achieved 95.56% accuracy on the test set.
 * **Confusion Matrix:**
 
 ![image](https://github.com/user-attachments/assets/2c94d92c-9334-4675-8cf2-e812f8bfb521)
+
 
 
 * **Visualization of Petal Length vs Petal Width with Predicted Classes:**
