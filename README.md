@@ -45,13 +45,16 @@ This project provides a foundational understanding of SVM, which can be extended
 
 * **Model Accuracy:**  Achieved 95.56% accuracy on the test set.
 * **Confusion Matrix:**
+![image](https://github.com/user-attachments/assets/70760604-8bf6-4504-acf5-d97937ec1905)
 
-![image](https://github.com/user-attachments/assets/2c94d92c-9334-4675-8cf2-e812f8bfb521)
+![image](https://github.com/user-attachments/assets/00964f34-e8a4-46fb-a81c-7992fc1b36f2)
+
 
 
 
 * **Visualization of Petal Length vs Petal Width with Predicted Classes:**
 
-![image](https://github.com/user-attachments/assets/ee509523-815e-492c-b057-1ea805771cc6)
+![image](https://github.com/user-attachments/assets/6b0810c8-3940-4d6a-a156-5ed88e75331e)
+
 
 
