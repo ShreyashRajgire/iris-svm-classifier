@@ -39,8 +39,8 @@ This project provides a foundational understanding of SVM, which can be extended
 ## Results :chart_with_upwards_trend:
 
 * **Hyperparameter Tuning Results:**
-  ![image](https://github.com/user-attachments/assets/3c598c62-2c3a-476f-b104-b70a9e0b8f21)
-  
+ ![image](https://github.com/user-attachments/assets/58d8cde3-cd99-4070-958e-ba104426533e)
+
 
 
 * **Model Accuracy:**  Achieved 95.56% accuracy on the test set.
